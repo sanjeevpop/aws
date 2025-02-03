@@ -1,98 +1,148 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #000;
+      color: #f00;
+    }
 
-const Portfolio = () => {
-  return (
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
-      {/* Header Section */}
-      <header className="w-full bg-blue-600 text-white py-8">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-2">Your Name</h1>
-          <p className="text-lg">Web Developer | Designer | Problem Solver</p>
-        </div>
-      </header>
+    header {
+      background-color: #800000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 0;
+      animation: slideIn 1s ease-out;
+    }
 
-      {/* About Section */}
-      <section className="max-w-5xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-        <p className="text-gray-700">
-          I am a passionate web developer with expertise in creating modern and responsive web applications. My goal is to build solutions that make a difference.
-        </p>
-      </section>
+    header h1 {
+      font-size: 2.5rem;
+    }
 
-      {/* Projects Section */}
-      <section className="max-w-5xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-4">Projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <Card key={index} className="shadow-lg">
-              <CardContent>
-                <h3 className="text-xl font-bold mb-2">Project {index + 1}</h3>
-                <p className="text-gray-600">Description of project {index + 1}.</p>
-                <Button className="mt-4 w-full">View Details</Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+    header p {
+      font-size: 1.2rem;
+    }
 
-      {/* Skills Section */}
-      <section className="max-w-5xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-4">Skills</h2>
-        <div className="flex flex-wrap gap-4">
-          {["HTML", "CSS", "JavaScript", "React", "Node.js", "Tailwind CSS"].map((skill, index) => (
-            <span
-              key={index}
-              className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
 
-      {/* Contact Section */}
-      <section className="max-w-5xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-4">Contact Me</h2>
-        <div className="flex gap-4 justify-center">
-          <a
-            href="mailto:your.email@example.com"
-            className="p-3 bg-gray-200 rounded-full hover:bg-gray-300"
-            aria-label="Email"
-          >
-            <Mail className="w-6 h-6 text-gray-700" />
-          </a>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 bg-gray-200 rounded-full hover:bg-gray-300"
-            aria-label="GitHub"
-          >
-            <Github className="w-6 h-6 text-gray-700" />
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 bg-gray-200 rounded-full hover:bg-gray-300"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="w-6 h-6 text-gray-700" />
-          </a>
-        </div>
-      </section>
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-      {/* Footer Section */}
-      <footer className="w-full bg-gray-800 text-white py-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
-        </div>
-      </footer>
+    .projects, .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background-color: #700000;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .skills span {
+      display: inline-block;
+      background-color: #900;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      margin: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background-color: #800000;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      background-color: #f00;
+      border-radius: 50%;
+      padding: 0.5rem;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .icon:hover {
+      background-color: #900;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>👋 Hello, I’m Your Name</h1>
+    <p>🚀 Web Developer | 🎨 Designer | 🧩 Problem Solver</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I am a passionate web developer with expertise in creating modern and responsive web applications. My goal is to build solutions that make a difference. 🌟</p>
+  </section>
+
+  <section>
+    <h2>My Projects 💻</h2>
+    <div class="projects">
+      <div class="card">Project 1 🚀</div>
+      <div class="card">Project 2 🌐</div>
+      <div class="card">Project 3 📱</div>
+      <div class="card">Project 4 🖥️</div>
     </div>
-  );
-};
+  </section>
 
-export default Portfolio;
+  <section>
+    <h2>Skills 🛠️</h2>
+    <div class="skills">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      <span>React</span>
+      <span>Node.js</span>
+      <span>Tailwind CSS</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Me 📬</h2>
+    <div>
+      <a href="mailto:your.email@example.com" class="icon">📧</a>
+      <a href="https://github.com/yourusername" class="icon">🐙</a>
+      <a href="https://linkedin.com/in/yourusername" class="icon">🔗</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved. ❤️</p>
+  </footer>
+</body>
+</html>
